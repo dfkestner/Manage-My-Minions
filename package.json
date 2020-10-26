@@ -1,0 +1,16 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "Allows users to view employees, departments, and roles.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "console-table-printer": "^2.4.29",
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1"
+  }
+}
