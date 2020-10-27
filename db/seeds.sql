@@ -28,10 +28,10 @@ CREATE TABLE employee (
 );
 
 INSERT INTO department (name)
-VALUES ('Assets'), ('Receiving'), ('Outgoing');
+VALUES ('Evil Fortress Maintenance'), ('Mad Science Research and Development'), ('Supervisor of Supervillainry');
 
 INSERT INTO role (title, salary, department_ID)
-VALUES ('Manager', 80000, 1), ('Clerk', 50000, 2), ('Agent', 60000, 3);
+VALUES ('Supervillain', 8000000, 3), ('Scientist', 5000000, 2), ('Minion', 6000, 1);
 
 INSERT INTO employee (first_name, last_name, role_ID, manager_ID)
-VALUES  ('Roger', 'Rogers', 1, NULL), ('Steve', 'Stevens', 2, 1), ('Andrew', 'Andrews', 3, 1);
+VALUES  ('Felonius', 'Gru', 1, NULL), ('Doctor', 'Nefario', 2, 1), ('Kevin', 'Minion', 3, 1);
