@@ -28,7 +28,7 @@ CREATE TABLE employee (
 );
 
 INSERT INTO department (name)
-VALUES ('Evil Fortress Maintenance'), ('Mad Science Research and Development'), ('Supervisor of Supervillainry');
+VALUES ('Evil Fortress Maintenance'), ('Mad Science Research and Development'), ('Supervillain Operations');
 
 INSERT INTO role (title, salary, department_ID)
 VALUES ('Supervillain', 8000000, 3), ('Scientist', 5000000, 2), ('Minion', 6000, 1);
