@@ -7,13 +7,13 @@ class dataBase {
 
     viewEmployee() {
         return this.connection.query(
-            "SELECT employee.id, employee.first_name, employee.last_name, role.title, manager_id FROM employee INNER JOIN role ON employee.role_id = role.id;",
+            "SELECT employee.id, employee.first_name, employee.last_name, role.title, manager_id FROM employee INNER JOIN role ON employee.role_id = role.id ORDER BY employee.id ASC;",
         );
     }
 
     viewRole() {
         return this.connection.query(
-            "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
+            "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id ORDER BY role.id ASC;"
         );
     }
 
