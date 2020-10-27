@@ -118,34 +118,34 @@ async function newEmployees() {
         }
     ]);
 
-    const chooseRole = roles.map(({ID, title}) => ({
+    const chooseRole = roles.map(({id, title}) => ({
         name: title,
-        value: ID
+        value: id
     }));
 
-    const {roleID} = await prompt({
+    const {roleid} = await prompt({
         type: "list",
-        name: "roleID",
+        name: "roleid",
         message: "Please select the employee's role",
         choices: chooseRole
     });
 
-    employee.role_ID = roleID;
+    employee.role_id = roleid;
 
-    const chooseManager = employees.map(({ID, first_name, last_name}) => ({
+    const chooseManager = employees.map(({id, first_name, last_name}) => ({
         name: `${first_name} ${last_name}`,
-        value: ID
+        value: id
     }));
 
     chooseManager.unshift({ name: "None", value: null });
-    const {managerID} = await prompt ({
+    const {managerid} = await prompt ({
         type: "list",
-        name: "managerID",
+        name: "managerid",
         message: "Please select the employee's manager",
         choices: chooseManager
     });
 
-    employee.manager_ID = managerID;
+    employee.manager_id = managerid;
 
     await dataBase.newEmployee(employee);
 
@@ -157,23 +157,23 @@ async function newEmployees() {
 async function newRoles() {
     const departments = await dataBase.viewDepartment();
 
-    const chooseDepartment = departments.map(({ID, name}) => ({
+    const chooseDepartment = departments.map(({id, name}) => ({
         name: name,
-        value: ID
+        value: id
     }));
 
     const role = await prompt([
         {
-            name: "Role Name",
+            name: "title",
             message: "Please enter a name for the new role"
         },
         {
-            name: "Salary",
+            name: "salary",
             message: "Please enter the salary for the new role"
         },
         {
             type: "list",
-            name: "Department List",
+            name: "department_id",
             message: "Please select a department for the new role",
             choices: chooseDepartment
         }
@@ -189,7 +189,7 @@ async function newRoles() {
 async function newDepartments() {
     const department = await prompt([
         {
-            name: "Department Name",
+            name: "name",
             message: "Please enter a name for the new Department"
         }
     ]);
@@ -204,15 +204,15 @@ async function newDepartments() {
 async function changeRoles() {
     const employees = await dataBase.viewEmployee();
 
-    const chooseEmployee = employees.map(({ID, first_name, last_name}) => ({
+    const chooseEmployee = employees.map(({id, first_name, last_name}) => ({
         name: `${first_name} ${last_name}`,
-        value: ID
+        value: id
     }));
 
-    const {employeeID} = await prompt ([
+    const {employeeid} = await prompt ([
         {
             type: "list",
-            name: "employeeID",
+            name: "employeeid",
             message: "Please select the employee who is changing roles",
             choices: chooseEmployee
         }
@@ -220,23 +220,23 @@ async function changeRoles() {
 
     const roles = await dataBase.viewRole();
 
-    const chooseRole = roles.map(({ID, title}) =>({
+    const chooseRole = roles.map(({id, title}) =>({
         name: title,
-        value: ID
+        value: id
     }));
 
-    const {roleID} = await prompt([
+    const {roleid} = await prompt([
         {
             type: "list",
-            name: "roleID",
+            name: "roleid",
             message: "What is the employee's new role?",
             choices: chooseRole
         }
     ]);
 
-    await dataBase.changeRole(employeeID, roleID);
+    await dataBase.changeRole(employeeid, roleid);
 
-    console.log(`${chooseEmployee.name}'s role has been updated successfully!`)
+    console.log("Employee role has been updated successfully!")
 
     beginPrompts();
 }
@@ -244,39 +244,39 @@ async function changeRoles() {
 async function changeManagers() {
     const employees = await dataBase.viewEmployee();
 
-    const chooseEmployee = employees.map(({ID, first_name, last_name}) => ({
+    const chooseEmployee = employees.map(({id, first_name, last_name}) => ({
         name: `${first_name} ${last_name}`,
-        value: ID
+        value: id
     }));
 
-    const {employeeID} = await prompt ([
+    const {employeeid} = await prompt ([
         {
             type: "list",
-            name: "employeeID",
+            name: "employeeid",
             message: "Please select the employee who is changing managers",
             choices: chooseEmployee
         }
     ]);
 
-    const managers = await dataBase.viewManager(employeeID);
+    const managers = await dataBase.viewManager(employeeid);
 
-    const chooseManager = managers.map(({ID, first_name, last_name}) => ({
+    const chooseManager = managers.map(({id, first_name, last_name}) => ({
         name: `${first_name} ${last_name}`,
-        value: ID
+        value: id
     }));
 
-    const {managerID} = await prompt([
+    const {managerid} = await prompt([
         {
             type: "list",
-            name: "managerID",
+            name: "managerid",
             message: "Please select the employee's new manager",
             choices: chooseManager
         }
     ]);
 
-    await dataBase.changeManager(employeeID, managerID);
+    await dataBase.changeManager(employeeid, managerid);
 
-    console.log(`${chooseEmployee.name}'s manager has been successfully updated to ${chooseManager.name}!`)
+    console.log("Employee manager has been updated successfully!")
 
     beginPrompts();
 }

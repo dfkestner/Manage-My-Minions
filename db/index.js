@@ -1,4 +1,4 @@
-const connection = require("./connections");
+const connection = require("./connect");
 
 class dataBase {
     constructor(connection) {
@@ -7,19 +7,19 @@ class dataBase {
 
     viewEmployee() {
         return this.connection.query(
-            "SELECT employee.ID, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, manager.first_name, manager.last_name AS manager FROM employee LEFT JOIN role on employee.role_ID = role.ID LEFT JOIN department on role.department_ID = department.ID LEFT JOIN employee manager on manager.ID = employee.manager_ID",
+            "SELECT employee.id, employee.first_name, employee.last_name, role.title, manager_id FROM employee INNER JOIN role ON employee.role_id = role.id;",
         );
     }
 
     viewRole() {
         return this.connection.query(
-            "SELECT role.ID, role.title, departement.name AS department, role.salary FROM role LEFT JOIN department on role.department_ID = department.ID;"
+            "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
         );
     }
 
     viewDepartment() {
         return this.connection.query(
-            "SELECT department.ID, department.name, role.salary FROM employee LEFT JOIN role on employees.role_ID = role.ID LEFT JOIN department on role.department_id = department.id GROUP BY department.ID, department.name;"
+            "SELECT * from department ORDER BY id ASC"
         );
     }
 
@@ -44,24 +44,24 @@ class dataBase {
         );
     }
 
-    changeRole(employeeID, roleID) {
+    changeRole(employeeid, roleid) {
         return this.connection.query(
-            "UPDATE employee SET role_ID = ? WHERE ID = ?",
-            [roleID, employeeID]
+            "UPDATE employee SET role_id = ? WHERE id = ?",
+            [roleid, employeeid]
         );
     }
 
-    changeManager(employeeID, managerID) {
+    changeManager(employeeid, managerid) {
         return this.connection.query(
-            "UPDATE employee SET manager_ID = ? WHERE ID = ?",
-            [managerID, employeeID]
+            "UPDATE employee SET manager_id = ? WHERE id = ?",
+            [managerid, employeeid]
         )
     }
 
-    viewManager (employeeID) {
+    viewManager (employeeid) {
         return this.connection.query(
-            "SELECT ID, first_name, last_name FROM employee WHERE id != ?",
-            employeeID
+            "SELECT id, first_name, last_name FROM employee WHERE id != ?",
+            employeeid
         )
     }
 }
