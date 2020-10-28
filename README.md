@@ -10,6 +10,7 @@ Future plans for development include additional search filter options, and enabl
 
 ## Screen Shots & Links
 [Manage My Minions GitHub Repository](https://github.com/dfkestner/Manage-My-Minions)
+
 ![First Screen Shot](https://github.com/dfkestner/Manage-My-Minions/blob/main/ManageMinions1.png)
 ![Second Screen Shot](https://github.com/dfkestner/Manage-My-Minions/blob/main/ManageMinions2.png)
 
