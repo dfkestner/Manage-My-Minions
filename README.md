@@ -31,7 +31,7 @@ Future plans for development include additional search filter options, and enabl
 
 ## Installation
 
-Clone the depository to your local directory, and use "npm i" to install dependencies.
+Clone the repository to your local directory, and use "npm i" to install dependencies. Open MySQL, use "Open SQL Script" to access the local directory where you've cloned the repository, and select the "seeds.sql" file, located in the "db" directory, to open the database in MySQL. Enter your MySQL password in "connect.js" and ensure the host, user, and database information is correct.
 
 ## Usage
 
